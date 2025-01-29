@@ -3,14 +3,17 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Cadastro from './Cadastro'
+import Nav from './Nav'
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
+      <Nav/>
       <BrowserRouter>
         <Routes>
-          <Route />
+          <Route path='/cadastro' element = {<Cadastro/>}/>
+          <Route path='/grafico' element = {''}/>
         </Routes>
       </BrowserRouter>
     </>
