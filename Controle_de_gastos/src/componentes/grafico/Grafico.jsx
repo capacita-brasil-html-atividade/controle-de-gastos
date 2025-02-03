@@ -1,41 +1,35 @@
-import React, { useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';"recharts";
-
+import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import './Grafico.css'
 
 const data = [
-  { name: "Janeiro", despesa: 400, receita: 800 },
-  { name: "Fevereiro", despesa: 300, receita: 700 },
-  { name: "Março", despesa: 200, receita: 600 },
-  { name: "Abril", despesa: 278, receita: 500 },
-  { name: "Maio", despesa: 189, receita: 400 },
-  { name: "Junho", despesa: 239, receita: 300 },
-  { name: "Julho", despesa: 349, receita: 200 },
-  { name: "Agosto", despesa: 400, receita: 800 },
-  { name: "Setembro", despesa: 300, receita: 700 },
-  { name: "Outubro", despesa: 200, receita: 600 },
-  { name: "Novembro", despesa: 278, receita: 500 },
-  { name: "Dezembro", despesa: 189, receita: 400 },
+  { name: 'Janeiro', lazer: 400, compras: 300, streamings: 200, transporte: 278, alimentacao: 189 },
+  { name: 'Fevereiro', lazer: 300, compras: 200, streamings: 100, transporte: 178, alimentacao: 89 },
+  { name: 'Março', lazer: 200, compras: 278, streamings: 189, transporte: 400, alimentacao: 239 },
+  { name: 'Abril', lazer: 278, compras: 200, streamings: 400, transporte: 300, alimentacao: 349 },
+  
 ];
 
 const Grafico = ({ dados }) => {
-//   const [showDespesas, setShowDespesas] = useState(true);
-//   const [showReceitas, setShowReceitas] = useState(true);
-
   return (
-    <div>
-      <ResponsiveContainer width="100%" height={400}>
-      <BarChart data={dados}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="despesa" stackId="a" fill="#8884d8" />
-        <Bar dataKey="receita" stackId="a" fill="#82ca9d" />
-      </BarChart>
-    </ResponsiveContainer>
+    <div className='container-grafico'>
+        <ResponsiveContainer width="100%" height={400}>
+          <BarChart data={dados}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="alimentacao" stackId="a" fill="#8884d8" />
+            <Bar dataKey="compras" stackId="a" fill="#82ca9d" />
+            <Bar dataKey="cursos" stackId="a" fill="#ffc658" />
+            <Bar dataKey="streamings" stackId="a" fill="#ff8042" />
+            <Bar dataKey="transporte" stackId="a" fill="#a4de6c" />
+          </BarChart>
+        </ResponsiveContainer>
     </div>
   );
 };
 
 export default Grafico;
+
