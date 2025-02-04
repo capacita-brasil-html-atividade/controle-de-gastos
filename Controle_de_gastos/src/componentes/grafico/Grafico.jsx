@@ -1,35 +1,43 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import './Grafico.css'
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { useGastos } from '../GastosContext';
 
-const data = [
-  { name: 'Janeiro', lazer: 400, compras: 300, streamings: 200, transporte: 278, alimentacao: 189 },
-  { name: 'Fevereiro', lazer: 300, compras: 200, streamings: 100, transporte: 178, alimentacao: 89 },
-  { name: 'Março', lazer: 200, compras: 278, streamings: 189, transporte: 400, alimentacao: 239 },
-  { name: 'Abril', lazer: 278, compras: 200, streamings: 400, transporte: 300, alimentacao: 349 },
-  
-];
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
-const Grafico = ({ dados }) => {
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
   return (
-    <div className='container-grafico'>
-        <ResponsiveContainer width="100%" height={400}>
-          <BarChart data={dados}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="alimentacao" stackId="a" fill="#8884d8" />
-            <Bar dataKey="compras" stackId="a" fill="#82ca9d" />
-            <Bar dataKey="cursos" stackId="a" fill="#ffc658" />
-            <Bar dataKey="streamings" stackId="a" fill="#ff8042" />
-            <Bar dataKey="transporte" stackId="a" fill="#a4de6c" />
-          </BarChart>
-        </ResponsiveContainer>
-    </div>
+    <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
   );
 };
+function Grafico () {
+    const { gastos } = useGastos(); 
+    return (
+        <ResponsiveContainer width="100%" height={400}>
+      <PieChart>
+        <Pie
+          data={gastos}
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={80}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {gastos.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>
+    )
+}
 
 export default Grafico;
-
