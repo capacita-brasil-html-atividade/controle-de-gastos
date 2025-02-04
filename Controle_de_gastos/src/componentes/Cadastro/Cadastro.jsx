@@ -12,14 +12,25 @@ function Cadastro () {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (nome && valor && data && categoria) {
+      const dataAtual = new Date();
+      const dataGasto = new Date(data);
+
+    if (dataGasto.getMonth() === dataAtual.getMonth() && dataGasto.getFullYear() === dataAtual.getFullYear()) {
       const novoGasto = { nome, valor: parseFloat(valor), data, categoria };
+      console.log('Novo Gasto:', novoGasto);
+
       adicionarGasto(novoGasto);
       setNome('');
       setValor('');
       setData('');
       setCategoria('');
+    } else {
+      alert('O gasto deve estar no mês atual.');
     }
-  };
+  }
+  }
+
+  
 
   return (
     <div className="cadastro">
@@ -30,16 +41,19 @@ function Cadastro () {
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           placeholder="Nome do gasto"
+          required
         />
         <input
           type="number"
           value={valor}
           onChange={(e) => setValor(e.target.value)}
           placeholder="Valor"
+          required
         />
         <input
           type="date"
           value={data}
+          required
           onChange={(e) => setData(e.target.value)}
         />
         <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
