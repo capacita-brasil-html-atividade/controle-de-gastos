@@ -9,31 +9,23 @@ export default function Cadastro(){
     function validar_campos(){
         // Data atual
         const data_atual = new Date()
-        // Pegando campos do formulário
-        const name = document.getElementById('nome')
-        const value = document.getElementById('valor')
-        const category = document.getElementById('categoria')
-        const date = document.getElementById('data')
-        // Verificando se todos os campos foram preenchidos
-        if( name !== '' && value !== 0 && category !== '' && date !==''){
-            // 'Setando' os 'states'
-            setNome(name.value)
-            setValor(value.value)
-            setCategoria(category.value)
-            setData(date.value)
+
+        console.log(nome,data,categoria,valor)
+        if( nome !== '' && valor !== 0 && categoria !== '' && data !==''){
             // Verificar se o valor é válido
             if(valor<=0){
-                alert('Valor inválido')
+                alert('Valor inválido. Insira um número maior que zero')
             }
             // Verificar se a data digitada é anterior a data atual
             if(data.split('-')[0]< data_atual.getFullYear()){
                 alert("Data passada")
             }
+            
             // limpar campos
-            name.value = ''
-            value.value = 0
-            category.value = ''
-            date.value = ''
+            setNome('')
+            setValor(0)
+            setData('')
+            setCategoria('')
         }else{
             alert('Preencha todos os campos')
         }
@@ -44,12 +36,12 @@ export default function Cadastro(){
     return(
         <div>
             <label htmlFor="nome">Despesa: </label>
-            <input type="text" name="nome" id="nome" />
+            <input type="text" name="nome" id="nome" onChange={(event) => setNome(event.target.value) } value={nome}/>
             <label htmlFor="valor">Valor:</label>
-            <input type="number" name="valor" id="valor"/>
+            <input type="number" name="valor" id="valor" onChange={ (event) => setValor(event.target.value)} value={valor}/>
             <label htmlFor="data">Data:</label>
-            <input type="date" name="data" id="data"/>
-            <select name="categoria" id="categoria">
+            <input type="date" name="data" id="data" onChange={(event) => setData(event.target.value)} value={data}/>
+            <select name="categoria" id="categoria" onChange={(event) => setCategoria(event.target.value)} value={categoria}>
                 <option value="compras">Compras</option>
                 <option value="cursos">Cursos</option>
                 <option value="streaming">Streaming</option>
