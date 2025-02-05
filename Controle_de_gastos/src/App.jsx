@@ -14,7 +14,6 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/grafico" element={<Grafico />} />
         </Routes>
-        <h1>Controle Financeiro</h1>
       </BrowserRouter>
       </GastosProvider>
       

@@ -21,11 +21,16 @@ function Grafico() {
   const { gastos } = useGastos();
   console.log('Gastos no Grafico:', gastos);  // Log para verificar os gastos
 
+  const categoriasExistentes = ['compras', 'streaming', 'cursos', 'alimentacao', 'transporte', 'Outros'];
+  const dadosFiltrados = gastos.filter(gasto => categoriasExistentes.includes(gasto.categoria));
+
   useEffect(() => {
-    console.log('Gastos atualizados no Grafico:', gastos);
+    console.log('Gastos atualizados no Grafico:', dadosFiltrados);
   }, [gastos]);
 
   return (
+    <>
+    <h1>Grafico</h1>
     <ResponsiveContainer width="100%" height={400}>
       <PieChart>
         <Pie
@@ -44,7 +49,12 @@ function Grafico() {
         </Pie>
       </PieChart>
     </ResponsiveContainer>
+    </>
   );
+  
 }
 
 export default Grafico;
+
+
+

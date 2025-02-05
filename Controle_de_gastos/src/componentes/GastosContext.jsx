@@ -6,18 +6,25 @@ const GastosContext = createContext();
 
 export const GastosProvider = ({ children }) => {
   const [gastos, setGastos] = useState([
-    { name: 'Alimentação', value: 400 },
-    { name: 'Compras', value: 300 },
-    { name: 'Cursos', value: 300 },
-    { name: 'Streaming', value: 200 },
-    { name: 'Transporte', value: 300},
+    
 ]);
 
-  const adicionarGasto = (novoGasto) => {
-    console.log('Adicioando Gasto:', novoGasto);
-    
-    setGastos((prevGastos) => [...prevGastos, novoGasto]);
-  };
+const adicionarGasto = (novoGasto) => {
+  setGastos((prevGastos) => {
+    const categoriaIndex = prevGastos.findIndex(g => g.name === novoGasto.categoria);
+
+    if (categoriaIndex !== -1) {
+      return prevGastos.map((gasto, index) =>
+        index === categoriaIndex
+          ? { ...gasto, value: gasto.value + novoGasto.value }
+          : gasto
+      );
+    } else {
+      return [...prevGastos, { name: novoGasto.categoria, value: novoGasto.value }];
+    }
+  });
+};
+
 
   return (
     <GastosContext.Provider value={{ gastos, adicionarGasto }}>
