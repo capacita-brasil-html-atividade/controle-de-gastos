@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useGastos } from '../GastosContext';
 import '../Cadastro/Cadastro.css';
+import Grafico from '../Grafico/Grafico';
 
 function Cadastro () {
   const { adicionarGasto } = useGastos();
@@ -16,7 +17,10 @@ function Cadastro () {
       const dataGasto = new Date(data);
 
     if (dataGasto.getMonth() === dataAtual.getMonth() && dataGasto.getFullYear() === dataAtual.getFullYear()) {
-      const novoGasto = { nome, valor: parseFloat(valor), data, categoria };
+      const categoriasExistentes = ['compras', 'streaming', 'cursos', 'alimentacao', 'transporte'];
+      const categoriaValida = categoriasExistentes.includes(categoria) ? categoria : 'Outros';
+
+      const novoGasto = { name: nome, value: parseFloat(valor), data, categoria: categoriaValida };
       console.log('Novo Gasto:', novoGasto);
 
       adicionarGasto(novoGasto);
@@ -41,19 +45,16 @@ function Cadastro () {
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           placeholder="Nome do gasto"
-          required
         />
         <input
           type="number"
           value={valor}
           onChange={(e) => setValor(e.target.value)}
           placeholder="Valor"
-          required
         />
         <input
           type="date"
           value={data}
-          required
           onChange={(e) => setData(e.target.value)}
         />
         <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
@@ -66,8 +67,10 @@ function Cadastro () {
         </select>
         <button type="submit">Adicionar Gasto</button>
       </form>
+      <Grafico />
     </div>
   );
 };
+
 
 export default Cadastro;

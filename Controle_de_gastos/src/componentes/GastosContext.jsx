@@ -5,11 +5,12 @@ import React, { createContext, useState, useContext } from 'react';
 const GastosContext = createContext();
 
 export const GastosProvider = ({ children }) => {
-  const [gastos, setGastos] = useState([{ name: 'alimentação', value: 400 },
-    { name: 'compras', value: 300 },
-    { name: 'cursos', value: 300 },
-    { name: 'streaming', value: 200 },
-    { name: 'transporte', value: 300},
+  const [gastos, setGastos] = useState([
+    { name: 'Alimentação', value: 400 },
+    { name: 'Compras', value: 300 },
+    { name: 'Cursos', value: 300 },
+    { name: 'Streaming', value: 200 },
+    { name: 'Transporte', value: 300},
 ]);
 
   const adicionarGasto = (novoGasto) => {
@@ -25,3 +26,5 @@ export const GastosProvider = ({ children }) => {
   );
 };
  export const useGastos = () => useContext(GastosContext);
+ 
+ 

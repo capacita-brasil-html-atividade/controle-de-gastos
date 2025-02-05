@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { useGastos } from '../GastosContext';
 
-
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#3F8042', '#00E56E'];
 
 const RADIAN = Math.PI / 180;
@@ -17,17 +16,17 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
     </text>
   );
 };
-function Grafico () {
-    const { gastos } = useGastos(); 
-    console.log('gastos no grafico', gastos);
-    
 
-    useEffect(() => {
-      console.log('Gastos atualizados no Grafico:', gastos);
-    }, [gastos]);
-    
-    return (
-        <ResponsiveContainer width="100%" height={400}>
+function Grafico() {
+  const { gastos } = useGastos();
+  console.log('Gastos no Grafico:', gastos);  // Log para verificar os gastos
+
+  useEffect(() => {
+    console.log('Gastos atualizados no Grafico:', gastos);
+  }, [gastos]);
+
+  return (
+    <ResponsiveContainer width="100%" height={400}>
       <PieChart>
         <Pie
           data={gastos}
@@ -45,7 +44,7 @@ function Grafico () {
         </Pie>
       </PieChart>
     </ResponsiveContainer>
-    )
+  );
 }
 
 export default Grafico;
