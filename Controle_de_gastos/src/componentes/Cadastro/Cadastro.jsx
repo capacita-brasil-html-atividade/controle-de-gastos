@@ -67,7 +67,7 @@ function Cadastro () {
         </select>
         <button type="submit">Adicionar Gasto</button>
       </form>
-      <Grafico />
+  
     </div>
   );
 };
