@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { useGastos } from '../GastosContext';
+import "../Grafico/grafico.css"
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#3F8042', '#00E56E'];
 

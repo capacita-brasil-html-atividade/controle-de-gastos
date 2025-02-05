@@ -1,0 +1,12 @@
+
+.cadastro {
+    display: flex;
+    background-color: yellowgreen;
+}
+
+.cadastro-container {
+
+    display: flex;
+    background-color: var(--verde-claro);
+}
+

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useGastos } from '../GastosContext';
-import '../Cadastro/Cadastro.css';
+import  styles from '../Cadastro/cadastro.module.css'
 import Grafico from '../Grafico/Grafico';
 import ListaDeGastos from '../Lista/Lista';
+
 
 function Cadastro () {
   const { adicionarGasto } = useGastos();
@@ -38,34 +39,42 @@ function Cadastro () {
   
 
   return (
-    <div className="cadastro">
+    <div className="styles.cadastro">
       <h2>Cadastro de Gastos</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          placeholder="Nome do gasto"
-        />
-        <input
-          type="number"
-          value={valor}
-          onChange={(e) => setValor(e.target.value)}
-          placeholder="Valor"
-        />
-        <input
-          type="date"
-          value={data}
-          onChange={(e) => setData(e.target.value)}
-        />
-        <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
-          <option value="">Selecione a categoria</option>
-          <option value="compras">Compras</option>
-          <option value="streaming">Streaming</option>
-          <option value="cursos">Cursos</option>
-          <option value="alimentacao">Alimentação</option>
-          <option value="transporte">Transporte</option>
-        </select>
+      <form onSubmit={handleSubmit} className='styles.cadastro-container'>
+        <div>
+          <input
+            type="text"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            placeholder="Nome do gasto"
+          />
+        </div>
+        <div>
+          <input
+            type="number"
+            value={valor}
+            onChange={(e) => setValor(e.target.value)}
+            placeholder="Valor"
+          />
+        </div>
+        <div>
+          <input
+            type="date"
+            value={data}
+            onChange={(e) => setData(e.target.value)}
+          />
+        </div>
+        <div>
+          <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
+            <option value="">Selecione a categoria</option>
+            <option value="compras">Compras</option>
+            <option value="streaming">Streaming</option>
+            <option value="cursos">Cursos</option>
+            <option value="alimentacao">Alimentação</option>
+            <option value="transporte">Transporte</option>
+          </select>
+        </div>
         <button type="submit">Adicionar Gasto</button>
       </form>
     <Grafico></Grafico>

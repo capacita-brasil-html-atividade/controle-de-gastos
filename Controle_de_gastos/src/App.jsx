@@ -3,7 +3,7 @@ import Cadastro from "./componentes/Cadastro/Cadastro";
 import Nav from "./componentes/Nav/Nav";
 import Grafico from "./componentes/Grafico/Grafico";
 import { GastosProvider } from "./componentes/GastosContext";
- // Verifique se o import está correto
+ 
 
 function App() {
   return (

@@ -14,6 +14,7 @@ const Lista = () => {
           {gastos.map((gasto, index) => (
             <li key={index}>
               <strong>{gasto.name}</strong> - R$ {gasto.value.toFixed(2)} - {gasto.categoria}
+              
             </li>
           ))}
         </ul>
