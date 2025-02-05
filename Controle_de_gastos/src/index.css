@@ -6,3 +6,8 @@
     --verde-escuro: #2A6B2E;
     --verde-muito-escuro: #1B4B1F;
   }
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }

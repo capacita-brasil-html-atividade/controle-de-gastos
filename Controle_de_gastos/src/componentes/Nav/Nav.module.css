@@ -3,10 +3,13 @@ nav {
     background-color: var(--verde-médio);
     display: flex;
     justify-content: space-around;
+    height: 5rem;
+    
 }
 ul {
     display: flex;
     gap: 4rem;
+    padding-top: 1.3rem;
 }
 
 ul li {
