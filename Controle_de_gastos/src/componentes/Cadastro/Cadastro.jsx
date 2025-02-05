@@ -39,43 +39,52 @@ function Cadastro () {
   
 
   return (
-    <div className="styles.cadastro">
+    <div className={styles.cadastro}>
       <h2>Cadastro de Gastos</h2>
-      <form onSubmit={handleSubmit} className='styles.cadastro-container'>
-        <div>
-          <input
-            type="text"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            placeholder="Nome do gasto"
-          />
+      <form onSubmit={handleSubmit} className={styles.container}>
+        <div className={styles.containerInputs}>
+          <div className={styles.divisorDeInputs}>
+            <label htmlFor="">Nome do gasto: </label>
+            <input
+              type="text"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              placeholder="Nome do gasto"
+              id='nome'
+            />
+          </div>
+          <div className={styles.divisorDeInputs}>
+            <label htmlFor="valor">Valor do gasto: </label>
+            <input
+              type="number"
+              value={valor}
+              onChange={(e) => setValor(e.target.value)}
+              placeholder="Valor"
+              id='valor'
+            />
+          </div>
+          <div className={styles.divisorDeInputs}>
+            <label htmlFor="data">Data de pagamento: </label> 
+            <input
+              type="date"
+              value={data}
+              onChange={(e) => setData(e.target.value)}
+              id='data'
+            />
+          </div>
+          <div className={styles.divisorDeInputs}>
+            <label htmlFor="categoria">Categoria do gasto: </label>
+            <select value={categoria} onChange={(e) => setCategoria(e.target.value)} id='cateogria'>
+              <option value="">Selecione a categoria</option>
+              <option value="compras">Compras</option>
+              <option value="streaming">Streaming</option>
+              <option value="cursos">Cursos</option>
+              <option value="alimentacao">Alimentação</option>
+              <option value="transporte">Transporte</option>
+            </select>
+          </div>
+          <button type="submit">Adicionar</button>
         </div>
-        <div>
-          <input
-            type="number"
-            value={valor}
-            onChange={(e) => setValor(e.target.value)}
-            placeholder="Valor"
-          />
-        </div>
-        <div>
-          <input
-            type="date"
-            value={data}
-            onChange={(e) => setData(e.target.value)}
-          />
-        </div>
-        <div>
-          <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
-            <option value="">Selecione a categoria</option>
-            <option value="compras">Compras</option>
-            <option value="streaming">Streaming</option>
-            <option value="cursos">Cursos</option>
-            <option value="alimentacao">Alimentação</option>
-            <option value="transporte">Transporte</option>
-          </select>
-        </div>
-        <button type="submit">Adicionar Gasto</button>
       </form>
     <Grafico></Grafico>
     <ListaDeGastos/>
