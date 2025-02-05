@@ -1,0 +1,10 @@
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+span{
+    display: flex;
+    justify-content: center;
+}
