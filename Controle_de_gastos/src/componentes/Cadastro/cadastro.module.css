@@ -27,6 +27,7 @@ form.container {
 
 .containerInputs{
     width: 50%;
+    min-width: 17rem;
     margin: 2rem;
     background-color: var(--verde-médio-escuro);
     border-top-left-radius: 3rem;
@@ -45,13 +46,19 @@ form.container {
 
 input {
     width: 90%;
+    min-width: 7rem;
     height: 2rem;
     border-radius: 5rem;
     border-color: var(--verde-médio-claro);
     margin: 0.5rem;
 }
 
-
+select {
+    width: 18rem;
+    height: 2rem;
+    border-radius: 1.5rem;
+    min-width: 2rem;
+}
 /* input[type="text"] {
 
 }
