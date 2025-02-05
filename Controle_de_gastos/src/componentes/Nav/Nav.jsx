@@ -6,6 +6,7 @@ export default function Nav(){
             <ul>
                 <li><Link to="/cadastro">Cadastro</Link></li>
                 <li><Link to="/grafico">Gráfico</Link></li>
+                <li><Link to="/lista">Lista</Link></li>
             </ul>
         </nav>
     )

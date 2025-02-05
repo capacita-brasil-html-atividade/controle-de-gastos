@@ -39,6 +39,7 @@ function Cadastro () {
   
 
   return (
+    <>
     <div className={styles.cadastro}>
       <h2>Cadastro de Gastos</h2>
       <form onSubmit={handleSubmit} className={styles.container}>
@@ -86,9 +87,11 @@ function Cadastro () {
           <button type="submit">Adicionar</button>
         </div>
       </form>
-    <Grafico></Grafico>
-    <ListaDeGastos/>
+    
+    
     </div>
+    {/* <ListaDeGastos/> */}
+    </>
   );
 };
 
