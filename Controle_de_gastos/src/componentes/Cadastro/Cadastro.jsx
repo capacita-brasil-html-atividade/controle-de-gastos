@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useGastos } from '../GastosContext';
 import '../Cadastro/Cadastro.css';
 import Grafico from '../Grafico/Grafico';
+import ListaDeGastos from '../Lista/Lista';
 
 function Cadastro () {
   const { adicionarGasto } = useGastos();
@@ -68,6 +69,7 @@ function Cadastro () {
         <button type="submit">Adicionar Gasto</button>
       </form>
     <Grafico></Grafico>
+    <ListaDeGastos/>
     </div>
   );
 };
